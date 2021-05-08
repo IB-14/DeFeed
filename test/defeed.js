@@ -98,3 +98,99 @@ contract('Defeed', ([deployer, author, donator]) => {
         })
     })
 })
+
+
+const Supply = artifacts.require('./Supply.sol')
+
+contract('Supply', ([deployer, author, tipper]) => {
+  let supply
+
+  before(async () => {
+    supply = await Supply.deployed()
+  })
+
+  describe('deployment', async () => {
+    it('deploys successfully', async () => {
+      const address = await supply.address
+      assert.notEqual(address, 0x0)
+      assert.notEqual(address, '')
+      assert.notEqual(address, null)
+      assert.notEqual(address, undefined)
+    })
+
+    it('has a name', async () => {
+      const name = await supply.name()
+      assert.equal(name, 'Supply')
+    })
+  })
+
+  describe('products', async ()=>{
+    let result,productCount;
+    const hash='abc123'
+    const price=500
+
+    before(async () => {
+      result = await supply.uploadProduct(hash,'Product name',price,{from:author})
+      productCount=await supply.productCount()
+    })
+
+    it('creates products', async ()=>{
+      assert.equal(productCount,1)
+      const event=result.logs[0].args;
+
+      assert.equal(event.id.toNumber(),productCount.toNumber(),'id is correct')
+      assert.equal(event.hash,hash,'hash is correct')
+      assert.equal(event.name,'Product name','name is correct')
+      assert.equal(event.price,price,'price is correct')
+      assert.equal(event.author,author,'author is correct')
+
+      await supply.uploadProduct('','Product Created',{from:author}).should.be.rejected;
+
+      await supply.uploadProduct('Image Hash','',{from:author}).should.be.rejected;
+    })
+
+    it('lists products',async ()=>{ //fetching products
+      const product=await supply.products(productCount);
+
+
+      assert.equal(product.id.toNumber(),productCount.toNumber(),'id is correct')
+      assert.equal(product.hash,hash,'hash is correct')
+      assert.equal(product.name,'Product name','name is correct')
+      assert.equal(product.price,price,'price is correct')
+      assert.equal(product.author,author,'author is correct')
+    })
+
+    it('allows users to buy products', async () => {
+      let oldAuthorBalance
+      oldAuthorBalance = await web3.eth.getBalance(author)
+      oldAuthorBalance = new web3.utils.BN(oldAuthorBalance)
+
+      result = await supply.payProductOwner(productCount, { from: tipper, value: web3.utils.toWei('0.0000000000000005', 'Ether') })
+
+      //SUCCESS
+      const event = result.logs[0].args
+      assert.equal(event.id.toNumber(), productCount.toNumber(), 'id is correct')
+      assert.equal(event.hash, hash, 'Hash is correct')
+      assert.equal(event.name, 'Product name', 'name is correct')
+      assert.equal(event.price, price.toString(), 'price is correct')
+      assert.equal(event.author, author, 'author is correct')
+
+      // Check that author received funds
+      let newAuthorBalance
+      newAuthorBalance = await web3.eth.getBalance(author)
+      newAuthorBalance = new web3.utils.BN(newAuthorBalance)
+
+      let tipProductOwner
+      tipProductOwner = web3.utils.toWei('0.0000000000000005', 'Ether')
+      tipProductOwner = new web3.utils.BN(tipProductOwner)
+
+      const expectedBalance = oldAuthorBalance.add(tipProductOwner)
+
+      assert.equal(newAuthorBalance.toString(), expectedBalance.toString())
+
+      // FAILURE: Tries to buy a product that does not exist
+      await supply.payProductOwner(99, { from: tipper, value: web3.utils.toWei('0.0000000000000005', 'Ether')}).should.be.rejected;
+     })
+
+  })
+})
