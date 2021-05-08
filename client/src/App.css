@@ -1,22 +1,37 @@
 .App {
-  text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.unAuthWrap {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
 }
 
-.App-link {
-  color: #09d3ac;
+.unAuthorized {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 90vw;
+  font-weight: 400 !important;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-left: -5vw;
+}
+
+.ethTower {
+  height: 70%;
+}
+
+.unlogo {
+  height: 100vh;
+  width: 10vw;
+}
+
+.log {
+  width: 200px;
+  height: 50px;
+  margin: 30px 0 0 20px;
 }

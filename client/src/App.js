@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import DeFeedContract from "./contracts/DeFeed.json";
+import UnAuthorized from "./Components/UnAuthorized";
+import Dashboard from "./Components/Dashboard/Dashboard"
 import getWeb3 from "./getWeb3";
 
 import "./App.css";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  state = { storageValue: 0, web3: null, activeSession: false, accounts: null, contract: null };
 
   componentDidMount = async () => {
     try {
@@ -41,7 +43,8 @@ class App extends Component {
 
     // Stores a given value, 5 by default.
     await contract.methods.set(5).send({ from: accounts[0] });
-    
+    this.setState({activeSession: true});
+
     // Get the value from the contract to prove it worked.
     const response = await contract.methods.get().call();
 
@@ -53,9 +56,31 @@ class App extends Component {
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
+
+    let board
+    if(!this.state.activeSession) 
+      board= <UnAuthorized />
+      // board= <Dashboard account={this.state.accounts[0]}/>
+    
+    else 
+      board= <Dashboard account={this.state.accounts[0]}/>
+    
+
     return (
       <div className="App">
-        <h1>Good to Go!</h1>
+        {board}
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+
+        {/* <h1>Good to Go!</h1>
         <p>Your Truffle Box is installed and ready.</p>
         <h2>Smart Contract Example</h2>
         <p>
@@ -65,10 +90,4 @@ class App extends Component {
         <p>
           Try changing the value stored on <strong>line 40</strong> of App.js.
         </p>
-        <div>The stored value is: {this.state.storageValue}</div>
-      </div>
-    );
-  }
-}
-
-export default App;
+        <div>The stored value is: {this.state.storageValue}</div> */}
