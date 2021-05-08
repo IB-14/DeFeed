@@ -1,5 +1,6 @@
 pragma solidity ^0.5.0;
 
+
 contract Supply{
     string public name="Supply";
 
@@ -51,7 +52,7 @@ contract Supply{
         require(_id>0&&_id<=productCount); //checking if id of post is valid
 
         Product memory _product=products[_id];
-        require(_product.price==msg.value);
+        require(msg.sender.balance>=_product.price);
         address payable _author=_product.author;
 
         address(_author).transfer(msg.value);
