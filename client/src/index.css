@@ -8,9 +8,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url("/Images/DeFeed_bg.png");
+  background-image: url("/Images/DeFeed_BG (1).png");
   background-position: center center;
-  background: #151515;
+  background-color: #15151541;
+  background-blend-mode: overlay;
 
 
   /* Background image doesn’t tile */
