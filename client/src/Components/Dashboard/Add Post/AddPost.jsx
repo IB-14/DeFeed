@@ -30,7 +30,6 @@ class AddPost extends Component {
           event.preventDefault()
           const description = this.imageDescription.value
           this.props.uploadImage(description)
-          this.props.forceUpdate();
       }} >
         <div className="RaiseDon">
       

@@ -80,9 +80,11 @@ class SupplyCard extends Component {
     }
     
     render() {
+        let sold
+        let Buy = "Buy"
         return (
             <div className="DonationBox">
-                {this.state.products.map(product=>{
+                {this.state.products.map((product, key)=>{
                     return(
                         <div className="donateCard">
                         <div className="identiDisplay">
@@ -97,13 +99,16 @@ class SupplyCard extends Component {
                         <span>Ph no. {product.name}</span>
                         <button
                             className="cutcutbut2"
+                            id={sold}
                             name={product.id}
                             onClick={(event) => {
                             let amount = window.web3.utils.toWei(`${product.price}`, 'Ether')
                             this.PayProductOwner(event.target.name, amount)
+                            sold="sold"
+                            Buy="Sold"
                           }}
                         >
-                          Buy
+                          {Buy}
                         </button>
 
                     </div>

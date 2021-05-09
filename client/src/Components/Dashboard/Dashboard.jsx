@@ -21,7 +21,8 @@ class Dashboard extends Component {
             Board: "donate",
             account: '',
             defeed:null,
-            images:[]
+            images:[],
+            balance: 0
         }
     }
 
@@ -66,6 +67,12 @@ class Dashboard extends Component {
             images: this.state.images.sort((a,b) => b.tipAmount - a.tipAmount )
           })
 
+          let acc= this.state.account
+
+          let bal= await web3.eth.getBalance(acc, (err, balance) => { console.log(acc + " Balance: ", web3.utils.fromWei(balance)) });
+          this.setState({balance: bal/1000000000000000000})
+          console.log(this.state.balance);
+          
         } else{
           window.alert("defeed contract not deployed")
         }
@@ -111,7 +118,11 @@ class Dashboard extends Component {
       this.forceUpdate();
     }
 
+    
+
     render() {
+
+      console.log(this.state.balance);
 
         let activeBoard;
         if(this.state.Board === "donate") {
@@ -127,11 +138,11 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <div className="barNav">
-                    <Navbar account={this.props.account}/>
+                    <Navbar account={this.props.account} accBalance={this.state.balance} />
                 </div>
                 <div className="dashWrap">
                     <div className="sideBar">
-                        <Sidebar Board={this.state.Board} clickActive={this.clickActive} />
+                        <Sidebar Board={this.state.Board} clickActive={this.clickActive} loadDonations={this.loadBlockchainData}/>
                     </div>
                     {/* <img className="vert" src={process.env.PUBLIC_URL + './Images/Verticle.svg'} /> */}
                     <div className="Board">

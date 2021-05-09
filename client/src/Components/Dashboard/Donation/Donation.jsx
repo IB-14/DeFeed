@@ -6,7 +6,7 @@ class Donation extends Component {
     constructor(props){
         super(props)
         this.state={
-            tip:0
+            tip:null
           }
     }
 
