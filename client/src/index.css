@@ -10,8 +10,8 @@ body {
 
   background-image: url("/Images/DeFeed_BG (1).png");
   background-position: center center;
-  background-color: #15151541;
-  background-blend-mode: overlay;
+  /* background-color: #1515151f;
+  background-blend-mode: overlay; */
 
 
   /* Background image doesn’t tile */

@@ -81,30 +81,24 @@ class SupplyCard extends Component {
     
     render() {
         return (
-            <div>
-                <h2>Add new product</h2>
-                <form onSubmit={(event) => {
-                    event.preventDefault()
-                    const name = this.name.value
-                    const price=this.price.value
-                    this.uploadImage(name,price)
-                }}>
-                    <input type='file' accept=".jpg, .jpeg, .png, .bmp, .gif" onChange={this.captureFile} />
-                    <input type="text" placeholder="Product name" id="name" ref={(input) => { this.name = input }}></input>
-                    <input type="number" placeholder="Product price" id="price" ref={(input) => { this.price = input }}></input>
-                    <button type="submit">Upload</button>
-                </form>
-                <br></br>
+            <div className="DonationBox">
                 {this.state.products.map(product=>{
                     return(
-                        <div>
-                        <img  src={`data:image/png;base64,${new Identicon(product.author, 30).toString()}`}/>
-                        <img src={`https://ipfs.infura.io/ipfs/${product.hash}`} style={{width:'100%'}}/>
-                        <p>{product.name}</p>
-                        <p>{product.price}</p>
+                        <div className="donateCard">
+                        <div className="identiDisplay">
+                            <img id="ident" src={`data:image/png;base64,${new Identicon(product.author, 30).toString()}`}/>
+                          </div>
+                        <img src={`https://ipfs.infura.io/ipfs/${product.hash}`} style={{width:"90%", height: "180px", opacity: "1"}}/>
+                        <div className="prodPrice">
+                            <div className="priceP">
+                                {product.price} ether
+                            </div>
+                        </div>
+                        <span>Ph no. {product.name}</span>
                         <button
-                          name={product.id}
-                          onClick={(event) => {
+                            className="cutcutbut2"
+                            name={product.id}
+                            onClick={(event) => {
                             let amount = window.web3.utils.toWei(`${product.price}`, 'Ether')
                             this.PayProductOwner(event.target.name, amount)
                           }}
@@ -121,3 +115,44 @@ class SupplyCard extends Component {
 }
 
 export default SupplyCard;
+
+
+
+
+
+
+            // <div>
+            //     <h2>Add new product</h2>
+            //     <form onSubmit={(event) => {
+            //         event.preventDefault()
+            //         const name = this.name.value
+            //         const price=this.price.value
+            //         this.uploadImage(name,price)
+            //     }}>
+            //         <input type='file' accept=".jpg, .jpeg, .png, .bmp, .gif" onChange={this.captureFile} />
+            //         <input type="text" placeholder="Product name" id="name" ref={(input) => { this.name = input }}></input>
+            //         <input type="number" placeholder="Product price" id="price" ref={(input) => { this.price = input }}></input>
+            //         <button type="submit">Upload</button>
+            //     </form>
+            //     <br></br>
+            //     {this.state.products.map(product=>{
+            //         return(
+            //             <div>
+            //             <img  src={`data:image/png;base64,${new Identicon(product.author, 30).toString()}`}/>
+            //             <img src={`https://ipfs.infura.io/ipfs/${product.hash}`} style={{width:'100%'}}/>
+            //             <p>{product.name}</p>
+            //             <p>{product.price}</p>
+            //             <button
+            //               name={product.id}
+            //               onClick={(event) => {
+            //                 let amount = window.web3.utils.toWei(`${product.price}`, 'Ether')
+            //                 this.PayProductOwner(event.target.name, amount)
+            //               }}
+            //             >
+            //               Buy
+            //             </button>
+
+            //         </div>
+            //         );
+            //     })}
+            // </div>

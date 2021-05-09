@@ -62,21 +62,9 @@ class Dashboard extends Component {
             })
           }
           console.log(this.state.images)
-
-          //supply contract
-        //   const supply=new web3.eth.Contract(Supply.abi,networkData.address);
-        //   this.setState({supply:supply})
-        //   const productsCount= await supply.methods.productCount().call()
-        //   this.setState({productsCount})
-        //   console.log(productsCount)
-        //   for (var i = 1; i <= productsCount; i++) {
-        //     const product = await supply.methods.products(i).call()
-        //     this.setState({
-        //       products: [...this.state.products, product]
-        //     })
-        //   }
-        //   console.log(this.state.products)
-
+          this.setState({
+            images: this.state.images.sort((a,b) => b.tipAmount - a.tipAmount )
+          })
 
         } else{
           window.alert("defeed contract not deployed")
@@ -119,6 +107,10 @@ class Dashboard extends Component {
         this.setState({Board: s})
     }
 
+    updateDetails() {
+      this.forceUpdate();
+    }
+
     render() {
 
         let activeBoard;
@@ -129,7 +121,7 @@ class Dashboard extends Component {
             activeBoard= <SupplyCard account={this.state.account} loadWeb3={this.loadWeb3} captureFile={this.captureFile} />
         }
         if(this.state.Board === "add post") {
-            activeBoard= <AddPost captureFile={this.captureFile} uploadImage={this.uploadImage} />
+            activeBoard= <AddPost account={this.state.account} captureFile={this.captureFile} uploadImage={this.uploadImage} updateDetails={this.updateDetails} />
         }
 
         return (
@@ -141,7 +133,7 @@ class Dashboard extends Component {
                     <div className="sideBar">
                         <Sidebar Board={this.state.Board} clickActive={this.clickActive} />
                     </div>
-                    <img className="vert" src={process.env.PUBLIC_URL + './Images/Verticle.svg'} />
+                    {/* <img className="vert" src={process.env.PUBLIC_URL + './Images/Verticle.svg'} /> */}
                     <div className="Board">
                         {activeBoard}
                     </div>

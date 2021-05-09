@@ -1,0 +1,162 @@
+.addWrap {
+    display: grid;
+    grid-template-columns: 2fr 1.25fr;
+    width: 100%;
+    color: #ffffff;
+}
+
+.addLeft {
+    /* border: 1px solid white; */
+    height: 110%;
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mobImg {
+    min-width: 0;
+    min-height: 0;
+    margin-left: -10vw;
+    margin-bottom: -8vw;
+    margin-top: -3vw;
+}
+
+#mobVect {
+    max-width: 40vw;
+}
+
+.topAddBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#topDivAdd {
+    padding: 0.25em 0.75em;
+    font-weight: 300;
+    font-size: 25px;
+    margin-right: 2em;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #472F99;
+}
+
+.addPostBoard {
+    height: 100%;
+    width: 100%;
+}
+
+.addPostTexts {
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+
+/*  sub pages css  */
+
+.RaiseDon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: space-evenly;
+    height: 500px;
+    width: 100%;
+    margin-bottom: -28px;
+}
+
+.trrp {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.txtArea {
+    resize: none;
+    width: 525px;
+    height: 75px;
+    background: rgba(86, 85, 85, 0.527);
+    color: white;
+    border: none;
+    padding: 1em;
+}
+
+.txtArea2 {
+    resize: none;
+    height: 40px;
+    width: 200px;
+    background: rgba(86, 85, 85, 0.527);
+    color: white;
+    border: none;
+    padding: 0 1em;
+}
+
+#phLabel {
+    color: #ffffff;
+    margin: -10px 0px 20px;
+    opacity: 0.8;
+    font-size: 0.75rem;
+}
+
+.flexForEth {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.flexForEth2 {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.ethAmt {
+    height: 40px;
+    width: 200px;
+    background: rgba(86, 85, 85, 0.527);
+    color: white;
+    border: none;
+    padding: 0 1em;
+}
+
+.trrp label {
+    color: #000;
+}
+
+.imgUpload {
+    display: none;
+}
+
+#imguplbl {
+    width: 200px;
+    background: rgba(86, 85, 85, 0.527);
+    padding: 1em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.postBut {
+    width: 120px;
+    font-size: 22px;
+    text-align: center;
+    padding: 0.25em 0.6em;
+    background-color: #472F99;
+    border-radius: 10px;
+    /* margin-left: 65%; */
+}
+
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
