@@ -19,7 +19,9 @@ To run the react app:
 
 ```
 npm install
+truffle migrate --reset
 cd client
+npm install
 npm start
 ```
 
