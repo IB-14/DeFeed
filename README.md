@@ -15,6 +15,14 @@ Through blockchain we are enabling the community to support itself by raising do
 
 ## Run Instructions
 
+To run the react app: 
+
+```
+npm install
+cd client
+npm start
+```
+
 ## Tech Stack Used
 
 - Truffle
@@ -22,5 +30,16 @@ Through blockchain we are enabling the community to support itself by raising do
 -	React JS
 - InterPlanetary File System (IPFS)
 -	Solidity    
+
+## Screenshots
+
+
 -	Web3
 - MetaMask (wallet) 
+
+![Contract_error (1).png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/e9b8499c-8ed4-4b02-b1ad-541d17459c02)
+
+## Future Scope
+- Post Covid-19, it can become a social networking website where people can post memes, digital art, etc and viewers can tip the posts they like. 
+- With improvements this platform can turn into a blockchain based e-commerce website. 
+- We may turn this project into an integrated NFT market place with post feeds including crypto and NFT news.
