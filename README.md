@@ -29,17 +29,20 @@ npm start
 -	Ganache
 -	React JS
 - InterPlanetary File System (IPFS)
--	Solidity    
-
-## Screenshots
-
-
+-	Solidity   
 -	Web3
 - MetaMask (wallet) 
 
-![Contract_error (1).png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/e9b8499c-8ed4-4b02-b1ad-541d17459c02)
+![Contract_error (1).png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/e9b8499c-8ed4-4b02-b1ad-541d17459c02) 
 
 ## Future Scope
 - Post Covid-19, it can become a social networking website where people can post memes, digital art, etc and viewers can tip the posts they like. 
 - With improvements this platform can turn into a blockchain based e-commerce website. 
 - We may turn this project into an integrated NFT market place with post feeds including crypto and NFT news.
+
+## Screenshots
+![Contract_error.png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/7b1af75f-e3c2-47e6-b77c-9ba9fabb3952)
+![Donate.png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/82caed1e-c5d6-4893-9517-bd9b6cf7169d)
+![Raise_Donation.png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/5d72fb20-3e61-436d-9e23-1d45e18a7e1f)
+![add_supply.png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/fc256314-8529-4629-9688-0ed6ba0992f1)
+![Supply.png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/23d28fc1-a2c4-4885-a89c-c154e13f4d86)
