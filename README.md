@@ -30,10 +30,11 @@ npm start
 - Truffle
 -	Ganache
 -	React JS
-- InterPlanetary File System (IPFS)
 -	Solidity   
+- InterPlanetary File System (IPFS)
 -	Web3
 - MetaMask (wallet) 
+- Figma (design)
 
 ![Contract_error (2).png](https://images.zenhubusercontent.com/6096fbff75c041832469625d/d2d1c498-1ee2-4bd6-96cf-f6bc6fed55a5)
 
